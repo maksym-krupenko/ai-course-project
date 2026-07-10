@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "permissions": {
+    "allow": [
+      "Read",
+      "Glob",
+      "Grep",
+      "Bash(git status)",
+      "Bash(git diff*)",
+      "Bash(git log*)",
+      "Bash(git branch*)",
+      "Bash(git show*)",
+      "Bash(git add*)",
+      "Bash(git commit*)",
+      "Bash(git checkout -b*)",
+      "Bash(./gradlew*)",
+      "Bash(gradle*)",
+      "Bash(npm install)",
+      "Bash(npm run*)",
+      "Bash(npm test*)",
+      "Bash(npm ci)",
+      "Bash(yarn*)",
+      "Bash(pnpm*)",
+      "Bash(node*)",
+      "Bash(mkdir -p*)",
+      "Bash(ls*)"
+    ]
+  }
+}
