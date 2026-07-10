@@ -1,9 +1,11 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "permissions": {
+    "defaultMode": "acceptEdits",
     "allow": [
       "Read",
       "Edit",
+      "Write",
       "Glob",
       "Grep",
       "Bash(git status)",
@@ -67,7 +69,8 @@
         "~/.aws"
       ],
       "allowWrite": [
-        "/tmp/build"
+        "/tmp/build",
+        "."
       ]
     },
     "network": {
