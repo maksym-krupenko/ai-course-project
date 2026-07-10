@@ -3,6 +3,7 @@
   "permissions": {
     "allow": [
       "Read",
+      "Edit",
       "Glob",
       "Grep",
       "Bash(git status)",
@@ -23,7 +24,8 @@
       "Bash(pnpm*)",
       "Bash(node*)",
       "Bash(mkdir -p*)",
-      "Bash(ls*)"
+      "Bash(ls*)",
+      "Bash(docker *)"
     ],
     "deny": [
       "Bash(git push --force *)",
@@ -85,6 +87,6 @@
     "excludedCommands": [
       "docker"
     ],
-    "allowUnsandboxedCommands": false
+    "allowUnsandboxedCommands": true
   }
 }
