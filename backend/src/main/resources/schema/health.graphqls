@@ -1,0 +1,9 @@
+type Query {
+    health: HealthPayload!
+}
+
+type HealthPayload {
+    status: String!
+    databaseReachable: Boolean!
+    version: String!
+}

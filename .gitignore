@@ -2,3 +2,21 @@
 
 # IntelliJ IDEA
 .idea/
+
+# Env files
+.env
+.env.*
+!.env.example
+
+# Backend (Gradle)
+backend/build/
+backend/.gradle/
+backend/.kotlin/
+
+# Frontend (Node/Vite)
+frontend/node_modules/
+frontend/dist/
+frontend/*.tsbuildinfo
+
+# OS
+.DS_Store
