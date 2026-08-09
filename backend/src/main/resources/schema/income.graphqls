@@ -1,0 +1,38 @@
+type Source {
+    code: ID!
+    label: String!
+}
+
+type Income {
+    id: ID!
+    amount: BigDecimal!
+    currency: String!
+    incomeDate: LocalDate!
+    source: Source!
+    note: String
+}
+
+input RecordIncomeInput {
+    amount: BigDecimal!
+    incomeDate: LocalDate
+    sourceCode: ID!
+    note: String
+}
+
+input EditIncomeInput {
+    amount: BigDecimal!
+    incomeDate: LocalDate!
+    sourceCode: ID!
+    note: String
+}
+
+extend type Query {
+    incomes(from: LocalDate!, to: LocalDate!): [Income!]!
+    sources: [Source!]!
+}
+
+extend type Mutation {
+    recordIncome(input: RecordIncomeInput!): Income!
+    editIncome(id: ID!, input: EditIncomeInput!): Income!
+    deleteIncome(id: ID!): ID!
+}

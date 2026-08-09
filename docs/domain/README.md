@@ -27,9 +27,10 @@ out* of the Expense Tracking context when they belong elsewhere.
 | Context | Status | Owns | Deliberately does NOT own |
 |---|---|---|---|
 | [Expense Tracking](expense-tracking.md) | **Defined — not implemented** | The record of money spent: expenses, the spending categories, retrieval by date and by period | Balances, income, budgets, forecasting, import mechanics, analytics |
-| Ingestion | `[Open]` — not started | Getting expense data in from outside (CSV files, later bank feeds): parsing, column mapping, deduplication, import runs | What an expense *means*; it produces candidate expenses and hands them to Expense Tracking |
-| Analysis & Insights | `[Open]` — not started | Aggregation over arbitrary periods, custom slicing, baselines ("is this normal for me?"), natural-language questions | The record itself, and the Period concept it aggregates over; it is a read-only consumer of Expense Tracking |
-| Accounts & Balances | `[Open]` — not started | Accounts, opening balances, running balances, reconciliation | Nothing in v1 — expenses are explicitly standalone |
+| [Income Tracking](income-tracking.md) | **Defined — not implemented** | The record of money received: income entries, the income sources, retrieval by date and by period | Balances, expenses, budgets, net/cashflow, import mechanics, analytics |
+| Ingestion | `[Open]` — not started | Getting expense/income data in from outside (CSV files, later bank feeds): parsing, column mapping, deduplication, import runs | What an expense or income *means*; it produces candidates and hands them to the owning context |
+| Analysis & Insights | `[Open]` — not started | Aggregation over arbitrary periods, custom slicing, baselines ("is this normal for me?"), net cashflow, natural-language questions | The records themselves, and the Period concept it aggregates over; it is a read-only consumer of Expense Tracking and Income Tracking |
+| Accounts & Balances | `[Open]` — not started | Accounts, opening balances, running balances, reconciliation | Nothing in v1 — expenses and income are explicitly standalone |
 | Budgeting | `[Open]` — not started | Limits per category per period, remaining-to-spend | The spending record |
 
 **Relationship note:** Analysis & Insights is a *downstream consumer* of

@@ -131,7 +131,8 @@ table, which is not repeated here.
 |---|---|
 | Split, Line, Line item | Expense Tracking, in a later version |
 | Account, Balance | Accounts & Balances |
-| Income, Transfer | Accounts & Balances |
+| Income | [Income Tracking](income-tracking.md) — a sibling context, not Accounts & Balances; see its spec's F-1 for why the earlier routing here was wrong |
+| Transfer | Accounts & Balances |
 | Budget, Limit, Remaining | Budgeting |
 | Merchant, Payee, Payment method | Expense Tracking, if/when reopened |
 | Tag, Label | Expense Tracking, if/when reopened |

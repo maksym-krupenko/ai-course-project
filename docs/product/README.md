@@ -61,3 +61,4 @@ the two rules that bind you when using these documents) → `docs/adr/`
 | Spec | Capability | Status |
 |---|---|---|
 | [001](001-expense-logging.md) | Expense logging & retrieval | Specified — not implemented |
+| [002](002-income-logging.md) | Income logging & retrieval | Specified — not implemented |
