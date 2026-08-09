@@ -1,0 +1,41 @@
+scalar BigDecimal
+scalar LocalDate
+
+type Category {
+    code: ID!
+    label: String!
+}
+
+type Expense {
+    id: ID!
+    amount: BigDecimal!
+    currency: String!
+    expenseDate: LocalDate!
+    category: Category!
+    note: String
+}
+
+input RecordExpenseInput {
+    amount: BigDecimal!
+    expenseDate: LocalDate
+    categoryCode: ID!
+    note: String
+}
+
+input EditExpenseInput {
+    amount: BigDecimal!
+    expenseDate: LocalDate!
+    categoryCode: ID!
+    note: String
+}
+
+extend type Query {
+    expenses(from: LocalDate!, to: LocalDate!): [Expense!]!
+    categories: [Category!]!
+}
+
+type Mutation {
+    recordExpense(input: RecordExpenseInput!): Expense!
+    editExpense(id: ID!, input: EditExpenseInput!): Expense!
+    deleteExpense(id: ID!): ID!
+}
