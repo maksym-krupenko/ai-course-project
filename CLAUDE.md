@@ -19,20 +19,28 @@ com.financeapp
     └── <feature>/
         ├── api/            # DGS data fetchers + GraphQL-facing DTOs
         ├── application/    # use-case orchestration (@Service)
-        ├── domain/         # entities, value objects, ports (interfaces) — pure Kotlin
-        └── infrastructure/ # adapters implementing domain ports (JPA, JDBC, external clients)
+        ├── domain/         # entities, value objects — pure Kotlin
+        └── infrastructure/ # adapters (JPA repositories, JDBC, external clients)
 ```
 
 **Layer dependency rule (one-directional, enforced by convention today, ArchUnit later):**
 
 - `domain` depends on nothing else in the feature. No Spring, no JPA, no DGS
-  annotations. If domain code needs something external (persistence, an
-  external API), it defines a **port** (interface) that another layer implements.
-- `application` depends only on its own feature's `domain` (+ `common`). It
-  orchestrates use cases and depends on domain **ports**, never on a specific
-  `infrastructure` implementation.
-- `infrastructure` implements the domain's ports (`@Component`/`@Repository`
-  adapters). It may depend on Spring Data/JDBC/JPA and its own feature's `domain`.
+  annotations.
+- `application` depends only on its own feature's `domain` and `infrastructure`
+  (+ `common`). It orchestrates use cases and may depend directly on an
+  `infrastructure` class (e.g. a Spring Data `JpaRepository`, a JDBC adapter) —
+  a domain-owned **port** (interface) is not required by default. See
+  `docs/adr/002-ports-only-where-they-earn-it.md` for why.
+- `infrastructure` may depend on Spring Data/JDBC/JPA and its own feature's
+  `domain`. `@Component`/`@Repository` classes here don't need to implement a
+  domain interface unless one exists for the reason below.
+- Introduce a domain-owned **port** only when the dependency is genuinely
+  volatile or swappable — a third-party/external API (e.g. a bank-data
+  provider), something you expect to have multiple implementations of, or
+  something you need to fake in a fast unit test without a real DB/network
+  call. Straightforward persistence (an entity CRUD'd via JPA) does not
+  need one.
 - `api` depends only on its own feature's `application` (+ `common`). It never
   returns domain or JPA entities directly over GraphQL — always map to a
   dedicated payload/input type owned by `api`.

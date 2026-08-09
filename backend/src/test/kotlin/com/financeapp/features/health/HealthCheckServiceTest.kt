@@ -1,7 +1,7 @@
 package com.financeapp.features.health
 
 import com.financeapp.features.health.application.HealthCheckService
-import com.financeapp.features.health.domain.DatabaseHealthPort
+import com.financeapp.features.health.infrastructure.DatabaseHealthAdapter
 import io.mockk.every
 import io.mockk.mockk
 import org.junit.jupiter.api.Test
@@ -11,8 +11,8 @@ import kotlin.test.assertTrue
 class HealthCheckServiceTest {
 	@Test
 	fun `reports UP when database is reachable`() {
-		val port = mockk<DatabaseHealthPort> { every { isReachable() } returns true }
-		val service = HealthCheckService(port, appVersion = "test")
+		val adapter = mockk<DatabaseHealthAdapter> { every { isReachable() } returns true }
+		val service = HealthCheckService(adapter, appVersion = "test")
 
 		val result = service.check()
 
@@ -22,8 +22,8 @@ class HealthCheckServiceTest {
 
 	@Test
 	fun `reports DEGRADED when database is unreachable`() {
-		val port = mockk<DatabaseHealthPort> { every { isReachable() } returns false }
-		val service = HealthCheckService(port, appVersion = "test")
+		val adapter = mockk<DatabaseHealthAdapter> { every { isReachable() } returns false }
+		val service = HealthCheckService(adapter, appVersion = "test")
 
 		val result = service.check()
 
