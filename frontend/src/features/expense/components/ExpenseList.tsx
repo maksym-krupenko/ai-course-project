@@ -6,6 +6,8 @@ import {
   type DeleteExpenseVariables,
   type Expense,
 } from "@/features/expense/api/queries";
+import { Button } from "@/shared/components/ui/button";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/shared/components/ui/table";
 
 interface ExpenseRowProps {
   expense: Expense;
@@ -23,22 +25,24 @@ function ExpenseRow({ expense, onEdit }: ExpenseRowProps) {
   });
 
   return (
-    <tr>
-      <td>{expense.expenseDate}</td>
-      <td>{expense.category.label}</td>
-      <td>
+    <TableRow>
+      <TableCell>{expense.expenseDate}</TableCell>
+      <TableCell>{expense.category.label}</TableCell>
+      <TableCell>
         {expense.amount} {expense.currency}
-      </td>
-      <td>{expense.note}</td>
-      <td>
-        <button type="button" onClick={() => onEdit(expense)}>
-          Edit
-        </button>
-        <button type="button" onClick={() => deleteExpense()}>
-          Delete
-        </button>
-      </td>
-    </tr>
+      </TableCell>
+      <TableCell className="text-muted-foreground">{expense.note}</TableCell>
+      <TableCell>
+        <div className="flex gap-2">
+          <Button type="button" variant="outline" size="sm" onClick={() => onEdit(expense)}>
+            Edit
+          </Button>
+          <Button type="button" variant="destructive" size="sm" onClick={() => deleteExpense()}>
+            Delete
+          </Button>
+        </div>
+      </TableCell>
+    </TableRow>
   );
 }
 
@@ -49,21 +53,21 @@ interface ExpenseListProps {
 
 export function ExpenseList({ expenses, onEdit }: ExpenseListProps) {
   return (
-    <table>
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>Category</th>
-          <th>Amount</th>
-          <th>Note</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
+    <Table>
+      <TableHeader>
+        <TableRow>
+          <TableHead>Date</TableHead>
+          <TableHead>Category</TableHead>
+          <TableHead>Amount</TableHead>
+          <TableHead>Note</TableHead>
+          <TableHead>Actions</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
         {expenses.map((expense) => (
           <ExpenseRow key={expense.id} expense={expense} onEdit={onEdit} />
         ))}
-      </tbody>
-    </table>
+      </TableBody>
+    </Table>
   );
 }

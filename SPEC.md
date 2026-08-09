@@ -59,6 +59,7 @@ and is retained as history.
 | Database | PostgreSQL 16, Flyway-managed migrations | As specified; Flyway gives an explicit, reviewable migration history from day one. |
 | Frontend | React 18 + TypeScript + Vite | Fast dev loop, no framework lock-in beyond React itself. |
 | GraphQL client | Apollo Client | De facto standard for React + GraphQL; normalized cache, generated-types-friendly. |
+| Frontend styling | Tailwind CSS v4 + shadcn/ui | The scaffold shipped with zero styling; once real features existed, plain unstyled JSX was unusable. Utility CSS + copy-in components keep generated code inspectable/editable rather than pulled in as an opaque library. See `docs/adr/003-frontend-styling-tailwind-shadcn.md`. |
 | Auth | **Deferred** — no auth in this scaffold | Explicit choice from the team to not guess at an auth strategy before it's needed; must be revisited via its own ADR before the first real feature ships. |
 | Local orchestration | Docker Compose (postgres + backend + frontend) | One-command local environment; no k8s/Helm needed at this stage. |
 | Backend build | Gradle (Kotlin DSL) | Standard for Kotlin/Spring projects; matches existing `.gitignore` (`backend/build/`, `backend/.gradle/`). |

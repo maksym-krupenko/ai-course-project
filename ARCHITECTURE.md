@@ -45,6 +45,10 @@ development; there is no production deployment topology defined yet
   GraphQL documents.
 - **Dependency direction:** `app → features → shared`, never sideways
   between features, never backwards from `shared`.
+- **Styling:** Tailwind CSS v4 + shadcn/ui. Reusable primitives live in
+  `shared/components/ui/`, managed via the `shadcn` CLI; features compose
+  them with Tailwind utility classes rather than writing CSS files. See
+  `docs/adr/003-frontend-styling-tailwind-shadcn.md`.
 
 ## Local environment
 

@@ -79,6 +79,17 @@ features need the same thing, promote it to `shared/`.
 client directly. All access goes through a feature's own `api/` module using
 Apollo Client (configured once in `app/providers/GraphQLProvider.tsx`).
 
+**Styling:** Tailwind CSS v4 utility classes directly in JSX — no hand-rolled
+CSS files, no CSS-in-JS. Reusable primitives (`Button`, `Card`, `Input`,
+`Label`, `Table`, `Textarea`, …) live in `shared/components/ui/` and are
+managed via the `shadcn` CLI (`npx shadcn@latest add <component>` from
+`frontend/` — `components.json`'s aliases already point at `shared/`, so new
+components land in the right place). Compose from those primitives and
+Tailwind classes; don't add a second component library. See
+`docs/adr/003-frontend-styling-tailwind-shadcn.md` for why, and for why the
+category/source pickers are a hand-styled native `<select>` rather than
+shadcn's Radix-backed `Select`.
+
 ## General
 
 - Auth is **intentionally not implemented yet** (see `SPEC.md` no-goals).
