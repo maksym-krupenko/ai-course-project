@@ -2,10 +2,15 @@
 
 ## Product
 
-A SaaS for managing personal finances. This document currently covers the
-**technical scaffold only** — the empty skeleton the product will be built
-into. Business scope (accounts, transactions, budgets, etc.) is deliberately
-out of scope until a dedicated product spec is written.
+A SaaS for managing personal finances. This document covers the **technical
+scaffold only** — the empty skeleton the product is built into.
+
+**Business scope now lives in `docs/product/`.** The first capability —
+expense logging & retrieval — is specified in
+`docs/product/001-expense-logging.md`, with its domain model in
+`docs/domain/expense-tracking.md`. The "no business features" no-goal below
+describes the scaffold as originally delivered; it is superseded by that spec
+and is retained as history.
 
 ## Goals (this scaffold)
 
