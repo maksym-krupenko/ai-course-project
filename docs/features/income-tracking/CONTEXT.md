@@ -25,3 +25,4 @@ that carry real content. ## Glossary is mandatory; the other two are optional.
 <!-- One line per term: name · one-sentence canonical definition · one-sentence boundary
      (what it is NOT / the concept it gets confused with). Alphabetical once there are a few. -->
 - income — a user-logged record of money received into an account from any source (salary, gift, refund, side income, etc.), the inbound counterpart to an expense. NOT transaction (a transaction is any addition or subtraction to an account's balance; income is specifically an inbound one).
+- income source — a user-defined or predefined label describing where an income record came from (e.g. Salary, Freelance, Gift), attached to an income entry for grouping/reporting. NOT category (income source is the income-side equivalent of an expense category — distinct terms per direction, not interchangeable).
